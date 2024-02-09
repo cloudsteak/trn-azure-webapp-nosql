@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Table Storage UI</title>
+</head>
+
+<body>
+    <h1>Data Objects</h1>
+    <table>
+        <tr style="vertical-align: top !important;">
+            <td>
+                <h2>Új elem hozzáadása</h2>
+                <form action="/add-entity" method="post">
+                    Adat: <input type="text" name="data" required><br>
+                    <input type="submit" value="Elem hozzáadása">
+                </form>
+
+                <!-- Form to generate 1000 data objects -->
+                <form action="/generate-data" method="post">
+                    <button type="submit">1000 elem létrehozása</button>
+                </form>
+            </td>
+            <td>
+                <ul>
+                    <% entities.forEach(function(entity) { %>
+                        <li>
+                            <%= entity.partitionKey %> - <%= entity.rowKey %> - <%= entity.data %>
+                        </li>
+                        <% }); %>
+                </ul>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+</body>
+
+</html>
