@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { TableClient, AzureNamedKeyCredential } = require('@azure/data-tables');
 require('dotenv').config();
-const crypto = require('crypto')
+const { v4: uuidv4 } = require('uuid');
 
 // Using environment variables
 const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
@@ -39,7 +39,7 @@ app.get('/', async (req, res) => {
 // Route to add an entity
 app.post('/add-entity', async (req, res) => {
     const { data } = req.body;
-    var rowKey = crypto.randomUUID();
+    var rowKey = uuidv4();
     await tableClient.createEntity({ partitionKey, rowKey, data });
     res.redirect('/');
 });
@@ -52,7 +52,7 @@ app.post('/generate-data', async (req, res) => {
         for (let i = 0; i < 1000; i++) {
             const entity = {
                 partitionKey: partitionKey,
-                rowKey: crypto.randomUUID(),
+                rowKey: uuidv4(),
                 data: `Data object ${i}`
             };
             entities.push(entity);
