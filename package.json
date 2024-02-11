@@ -4,8 +4,7 @@
   "description": "NodeJS webapp, NoSQL adatbázis",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Info: no test specified\""
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
