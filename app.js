@@ -10,7 +10,7 @@ const tableName = process.env.AZURE_TABLE_NAME
 const partitionKey = process.env.AZURE_TABLE_PARTITION_KEY
 // Initialize express app
 const app = express();
-const port = 3000;
+const port = 8080;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
