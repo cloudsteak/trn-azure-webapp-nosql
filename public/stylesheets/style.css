@@ -52,11 +52,6 @@ th {
   text-align: center;
 }
 
-tr:hover,
-tbody tr:nth-child(odd):hover {
-  background-color: rgba(0, 0, 0, 0.642);
-  color: whitesmoke;
-}
 
 td {
   padding-left: 10px;
@@ -70,4 +65,20 @@ p {
   padding-left: 10%;
   padding-right: 10%;
   border-radius: 15px;
+}
+
+button{
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  text-align: center;
+  background-color: #00B7FF;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+button:hover{
+  background-color: black;
+  color: #00B7FF;
 }
