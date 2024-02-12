@@ -1,86 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Azure Table Storage UI</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+</head>
 
-  <body>
-    <h1
-      style="
+<body>
+    <h1 style="
         background-color: #0000004c;
         border-radius: 10px;
         vertical-align: middle;
-      "
-    >
-      NoSQL Adatkezelés
+      ">
+        NoSQL Adatkezelés
     </h1>
     <table style="padding-bottom: 20px; margin-bottom: 30px">
-      <tr>
-        <th colspan="2">Új elem hozzáadása</th>
-        <th style="width: 250px">Adatbázisban lévő elemek</th>
-      </tr>
-      <tr style="vertical-align: top !important; text-align: center">
-        <td>
-          <form action="/add-entity" method="post">
-            <textarea
-              style="width: 95% !important; min-height: 100px"
-              type="text"
-              name="data"
-              required
-            ></textarea
-            ><br />
-            <button type="submit">Elem hozzáadása</button>
-          </form>
-        </td>
-        <td style="width: 250px; text-align: center">
-            <p
-            style="
+        <tr>
+            <th colspan="2">Új elem hozzáadása</th>
+            <th style="width: 250px">Adatbázisban lévő elemek</th>
+        </tr>
+        <tr style="vertical-align: top !important; text-align: center">
+            <td>
+                <form action="/add-entity" method="post">
+                    <textarea style="width: 95% !important; min-height: 100px" type="text" name="data"
+                        required></textarea><br />
+                    <button type="submit">Elem hozzáadása</button>
+                </form>
+            </td>
+            <td style="width: 250px; text-align: center">
+                <p style="
               padding-top: 10px;
               color: transparent;
               background-color: transparent !important;
-            "
-          >
-            &nbsp;
-          </p>
-          <!-- Form to generate 100 data objects -->
-          <form action="/generate-data" method="post">
-            <button type="submit">100 elem létrehozása</button>
-          </form>
-        </td>
-        <td style="text-align: center">
-          <p
-            style="
+            ">
+                    &nbsp;
+                </p>
+                <!-- Form to generate 100 data objects -->
+                <form action="/generate-data" method="post">
+                    <button type="submit">100 elem létrehozása</button>
+                </form>
+            </td>
+            <td style="text-align: center">
+                <p style="
               padding-top: 10px;
               color: transparent;
               background-color: transparent !important;
-            "
-          >
-            &nbsp;
-          </p>
-          <label
-            style="background-color: #00b7ff; font-size: 22px; padding: 10px; border-radius: 5px;"
-            ><%= entities.length %></label
-          >
-        </td>
-      </tr>
+            ">
+                    &nbsp;
+                </p>
+                <label style="background-color: #00b7ff; font-size: 22px; padding: 10px; border-radius: 5px;">
+                    <%= entities.length %>
+                </label>
+            </td>
+        </tr>
     </table>
-    <table>
-      <tr>
-        <th>Adat</th>
-        <th>PartitionKey</th>
-        <th>RowKey</th>
-      </tr>
-      <% entities.forEach(function(entity) { %>
-      <tr class="dataRow">
-        <td><%= entity.data %></td>
-        <td style="width: 250px;"><%= entity.partitionKey %></td>
-        <td style="width: 250px;"><%= entity.rowKey %></td>
-      </tr>
 
-      <% }); %>
+
+    <table>
+        <tr>
+            <th>Adat</th>
+            <th>PartitionKey</th>
+            <th>RowKey</th>
+        </tr>
+        <% entities.forEach(function(entity) { %>
+            <tr class="dataRow">
+                <td>
+                    <%= entity.data %>
+                </td>
+                <td style="width: 250px;">
+                    <%= entity.partitionKey %>
+                </td>
+                <td style="width: 250px;">
+                    <%= entity.rowKey %>
+                </td>
+            </tr>
+
+            <% }); %>
     </table>
-  </body>
+</body>
+
 </html>
