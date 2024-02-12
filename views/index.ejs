@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Azure Table Storage UI</title>
-</head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
 
-<body>
-    <h1>Data Objects</h1>
+  <body>
+    <h1>NoSQL Adatkezelés</h1>
     <table>
-        <tr style="vertical-align: top !important;">
-            <td>
-                <h2>Új elem hozzáadása</h2>
-                <form action="/add-entity" method="post">
-                    Adat: <input type="text" name="data" required><br>
-                    <input type="submit" value="Elem hozzáadása">
-                </form>
-
-                <!-- Form to generate 1000 data objects -->
-                <form action="/generate-data" method="post">
-                    <button type="submit">1000 elem létrehozása</button>
-                </form>
-            </td>
-            <td>
-                <ul>
-                    <% entities.forEach(function(entity) { %>
-                        <li>
-                            <%= entity.partitionKey %> - <%= entity.rowKey %> - <%= entity.data %>
-                        </li>
-                        <% }); %>
-                </ul>
-            </td>
-        </tr>
-
+      <tr>
+        <th colspan="2">Új elem hozzáadása</th>
+        <th style="width: 250px">Adatbázisban lévő elemek</th>
+      </tr>
+      <tr style="vertical-align: top !important">
+        <td>
+          <form action="/add-entity" method="post">
+            <textarea style="width: 95% !important; min-height: 100px" type="text" name="data" required></textarea><br />
+            <input type="submit" value="Elem hozzáadása" />
+          </form>
+        </td>
+        <td>
+          <!-- Form to generate 100 data objects -->
+          <form action="/generate-data" method="post">
+            <button type="submit">100 elem létrehozása</button>
+          </form>
+        </td>
+        <td style="text-align: right">
+          <label><%= entities.length %></label>
+        </td>
+      </tr>
     </table>
+    <table>
+        <tr>
+            <th>PartitionKey</th>
+            <th>RowKey</th>
+            <th>Adat</th>
+        </tr>
+      <% entities.forEach(function(entity) { %>
+      <tr class="dataRow">
+        <td style="width: 250px;"><%= entity.partitionKey %></td>
+        <td><%= entity.rowKey %></td>
+        <td><%= entity.data %></td>
+      </tr>
 
-
-
-</body>
-
+      <% }); %>
+    </table>
+  </body>
 </html>
