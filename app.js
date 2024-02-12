@@ -43,6 +43,7 @@ app.get("/", async (req, res) => {
 app.post("/add-entity", async (req, res) => {
   const { data } = req.body;
   var rowKey = uuidv4();
+
   await tableClient.createEntity({ partitionKey, rowKey, data });
   res.redirect("/");
 });
@@ -66,18 +67,18 @@ app.post("/generate-data", async (req, res) => {
     ];
 
     const surenames = [
-        "Nagy",
-        "Kovács",
-        "Horváth",
-        "Tóth",
-        "Szabó",
-        "Kiss",
-        "Molnár",
-        "Varga",
-        "Farkas",
-        "Pap"
-      ];
-      
+      "Nagy",
+      "Kovács",
+      "Horváth",
+      "Tóth",
+      "Szabó",
+      "Kiss",
+      "Molnár",
+      "Varga",
+      "Farkas",
+      "Pap",
+    ];
+
     for (let i = 0; i < 100; i++) {
       const fIndex = Math.floor(Math.random() * firstnames.length);
       const sIndex = Math.floor(Math.random() * surenames.length);
