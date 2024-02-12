@@ -1,0 +1,21 @@
+{
+  "name": "trn-azure-webapp-nosql",
+  "version": "1.0.0",
+  "description": "NodeJS webapp, NoSQL adatbázis",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "body-parser": "^1.20.2",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
+  }
+}
